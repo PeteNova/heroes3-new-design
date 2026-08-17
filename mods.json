@@ -45,22 +45,22 @@
       "factionEn": "Rampart",
       "classes": ["Rangerzy", "Druidzi"],
       "status": "available",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "15 z 16 portretów odświeżonych. Mephala zostaje na razie oryginalnym slotem z gry — master z pilota v3 nie wszedł do tej paczki.",
+      "notes": "Pełny skład 16 rangerów i druidów AvLee, w tym Mephala. Paleta lasu oraz nieludzkie anatomie zachowane z oryginału.",
       "sheet": "assets/sheets/rampart-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/rampart-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-rampart-v1.zip",
-      "downloadSize": "4,6 MB",
+      "downloadSize": "4,9 MB",
       "zipFolder": "heroes3-new-design-portraits-rampart-v1",
       "accent": "#6f8f4e",
       "roster": {
-        "Rangerzy": ["Mephala (vanilla)", "Ufretin", "Jenova", "Ryland", "Thorgrim", "Ivor", "Clancy", "Kyrre"],
+        "Rangerzy": ["Mephala", "Ufretin", "Jenova", "Ryland", "Thorgrim", "Ivor", "Clancy", "Kyrre"],
         "Druidzi": ["Coronius", "Uland", "Elleshar", "Gem", "Malcom", "Melodia", "Alagar", "Aeris"]
       }
     },
