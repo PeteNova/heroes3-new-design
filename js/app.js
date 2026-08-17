@@ -38,11 +38,18 @@
     return mod.status === "available" ? "Do pobrania" : "Wkrótce";
   }
 
+  function versionedUrl(path, version) {
+    if (!path) return path;
+    if (!version) return path;
+    return path + (path.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(version);
+  }
+
   function thumbHtml(mod) {
-    if (mod.sheet) {
+    var src = mod.sheetHpl || mod.sheet;
+    if (src) {
       return (
-        '<img src="' + escapeHtml(mod.sheet) + '" alt="Porównanie oryginału i New Design — ' +
-        escapeHtml(mod.faction) + '">'
+        '<img src="' + escapeHtml(versionedUrl(src, mod.version)) +
+        '" alt="Portrety — ' + escapeHtml(mod.faction) + '">'
       );
     }
     return '<div class="placeholder">podgląd wkrótce</div>';
@@ -127,7 +134,8 @@
       hpl =
         "<h2>Skala gry (HPL 58×64)</h2>" +
         '<div class="sheet-scroll">' +
-          '<img src="' + escapeHtml(mod.sheetHpl) + '" alt="Portrety HPL w skali gry — ' +
+          '<img src="' + escapeHtml(versionedUrl(mod.sheetHpl, mod.version)) +
+          '" alt="Portrety HPL w skali gry — ' +
           escapeHtml(mod.faction) + '">' +
         "</div>" +
         '<p class="caption">Tak portrety wyglądają w natywnym rozmiarze interfejsu.</p>';
@@ -136,7 +144,8 @@
       '<section class="sheet-wrap frame">' +
         "<h2>Oryginał i New Design</h2>" +
         '<div class="sheet-scroll">' +
-          '<img src="' + escapeHtml(mod.sheet) + '" alt="Porównanie oryginału i odświeżenia — ' +
+          '<img src="' + escapeHtml(versionedUrl(mod.sheet, mod.version)) +
+          '" alt="Porównanie oryginału i odświeżenia — ' +
           escapeHtml(mod.faction) + '">' +
         "</div>" +
         '<p class="caption">W każdej parze: oryginał po lewej, odświeżenie po prawej. Przewiń w poziomie, jeśli tablica jest szersza niż okno.</p>' +
@@ -149,7 +158,7 @@
     if (mod.status === "available" && mod.download) {
       var size = mod.downloadSize ? " · " + escapeHtml(mod.downloadSize) : "";
       return (
-        '<a class="cta" href="' + escapeHtml(mod.download) + '" download>' +
+        '<a class="cta" href="' + escapeHtml(versionedUrl(mod.download, mod.version)) + '" download>' +
           "Pobierz ZIP" + size +
         "</a>"
       );
