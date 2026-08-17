@@ -32,7 +32,7 @@ Status: ✅ done · 🔄 in progress · ⏳ todo.
 
 ## Później
 
-- [x] Hosting publiczny — GitHub Pages (`PeteNova/heroes3-new-design`)
+- [x] Hosting publiczny — GitHub (`PeteNova/heroes3-new-design`); Vercel przez import repo
 - [ ] Paczki jednostek, miast i UI, gdy F2+ wypuści coś fanowskiego
 - [ ] Język angielski jako pełna warstwa, nie tylko podtytuły
 - [ ] Sumy kontrolne ZIP-ów na stronie moda

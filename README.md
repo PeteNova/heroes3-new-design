@@ -4,6 +4,8 @@ Fanowski remaster wizualny portretów bohaterów Heroes of Might and Magic III n
 
 - **Strona:** https://petenova.github.io/heroes3-new-design/
 - **Repozytorium:** https://github.com/PeteNova/heroes3-new-design
+- **GitHub Pages:** https://petenova.github.io/heroes3-new-design/
+- **Vercel:** zaimportuj repo w [vercel.com/new](https://vercel.com/new/import?s=https://github.com/PeteNova/heroes3-new-design) (preset Other, bez builda, output `.`)
 
 To repozytorium to **publiczna strona dystrybucji** (katalog `mods-site/` z projektu nadrzędnego). Pipeline artystyczny — mastery, oryginalne ekstrakty z gry, skrypty i playtest — zostaje lokalnie i nie jest tu publikowany.
 
