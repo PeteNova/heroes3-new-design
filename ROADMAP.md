@@ -28,6 +28,7 @@ Status: ✅ done · 🔄 in progress · ⏳ todo.
 - [x] Nekropolia v1.2.0 — ZIP i sheety po przeglądzie kadrów
 - [x] HD 2×/3×/4× dla Wieży
 - [x] Wrota Żywiołów: ZIP i sheety po akceptacji kadrów i deployu
+- [x] Bastion v1.2.0 — Mephala w ZIP i na contact sheetach
 - [ ] Specjalni i kampanijni, gdy powstanie paczka
 
 ## Później
