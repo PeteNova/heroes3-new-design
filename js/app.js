@@ -140,7 +140,7 @@
           '<p>Pobierz ZIP, rozpakuj go i skopiuj zawarty folder do <code>Mods</code> VCMI. Następnie włącz mod w launcherze.</p></div>' +
         '<div><h2>Dane techniczne</h2>' +
           '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
-          '+. Paczki zmieniają wyłącznie portrety: HPL 1× (58×64) i HPS 1× (48×32), plus warianty HD VCMI 2× / 3× / 4×.</p></div>' +
+          '+.</p><p>Paczki zmieniają wyłącznie portrety: HPL 1× (58×64) i HPS 1× (48×32), plus warianty HD VCMI 2× / 3× / 4×.</p></div>' +
       "</section>";
   }
 

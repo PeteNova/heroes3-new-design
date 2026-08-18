@@ -224,6 +224,10 @@ main {
   margin: 0;
 }
 
+.landing-info p + p {
+  margin-top: 0.4rem;
+}
+
 .landing-info code {
   color: var(--gold-bright);
   font-size: 0.95em;
