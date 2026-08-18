@@ -121,8 +121,8 @@
     app.innerHTML =
       '<section class="hero frame">' +
         '<div class="ornament" aria-hidden="true"></div>' +
-        "<h1>" + escapeHtml(project.name) + "</h1>" +
         '<p class="en">' + escapeHtml(project.taglineEn) + "</p>" +
+        "<h1>" + escapeHtml(project.name) + "</h1>" +
         "<p>" + escapeHtml(project.pitch) + "</p>" +
         '<div class="stats">' +
           packsReadyLabel(availableCount()) +

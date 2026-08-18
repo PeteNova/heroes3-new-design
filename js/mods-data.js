@@ -1,9 +1,9 @@
 /* Generated from mods.json. Edit mods.json, then run this script. */
 window.H3ND_MODS = {
   "project": {
-    "name": "Graphic Mods",
+    "name": "Heroes of Might and Magic III",
     "tagline": "Wizualny remaster dla fanów klasyka",
-    "taglineEn": "Heroes of Might and Magic III",
+    "taglineEn": "Graphic Mods",
     "pitch": "Odświeżamy wyłącznie warstwę graficzną Heroes of Might and Magic III. Mechanika, balans i muzyka zostają bez zmian — zmienia się detal, światło i czytelność portretów, tak byś nadal od razu poznał każdą postać.",
     "vcmiMin": "1.7.0",
     "audience": "Fani Heroes grający na VCMI"
