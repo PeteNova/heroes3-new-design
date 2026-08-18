@@ -137,18 +137,18 @@
           "<div><b>tylko grafika</b>bez zmian mechaniki</div>" +
         "</div>" +
       "</section>" +
+      '<div class="section-head">' +
+        "<h2>Mody portretów</h2>" +
+        "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
+      "</div>" +
+      '<div class="mod-grid">' + cards + "</div>" +
       '<section class="landing-info frame">' +
         '<div><h2>Instalacja</h2>' +
           '<p>Pobierz ZIP, rozpakuj go i skopiuj zawarty folder do <code>Mods</code> VCMI. Następnie włącz mod w launcherze.</p></div>' +
         '<div><h2>Dane techniczne</h2>' +
           '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
           '+. Paczki zmieniają wyłącznie portrety HPL/HPS; zawierają skalę 1× oraz warianty HD tam, gdzie wskazano na karcie.</p></div>' +
-      "</section>" +
-      '<div class="section-head">' +
-        "<h2>Mody portretów</h2>" +
-        "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
-      "</div>" +
-      '<div class="mod-grid">' + cards + "</div>";
+      "</section>";
   }
 
   function renderInstall() {
