@@ -169,10 +169,11 @@ main {
 }
 
 .hero .en {
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: none;
   color: var(--gold);
   margin: 0 0 1rem;
 }
