@@ -325,6 +325,7 @@ main {
   font-size: clamp(0.58rem, 1.55vw, 0.75rem);
   font-style: italic;
   line-height: 1.15;
+  opacity: 0.68;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
