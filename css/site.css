@@ -262,19 +262,49 @@ main {
 }
 
 .thumb {
-  aspect-ratio: 29 / 32;
   background: #090806;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
 
-.thumb img {
+.portrait-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #090806;
+}
+
+.gallery-portrait {
+  min-width: 0;
+  padding: 3px 3px 5px;
+  text-align: center;
+  border-right: 1px solid rgba(212, 180, 106, 0.15);
+  border-bottom: 1px solid rgba(212, 180, 106, 0.15);
+}
+
+.gallery-portrait:nth-child(4n) {
+  border-right: 0;
+}
+
+.gallery-face {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  image-rendering: auto;
+  aspect-ratio: 116 / 128;
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+}
+
+.gallery-portrait i {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.15rem;
+  color: var(--ink-dim);
+  font-family: var(--font-body);
+  font-size: clamp(0.58rem, 1.55vw, 0.75rem);
+  font-style: italic;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .placeholder {

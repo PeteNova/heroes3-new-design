@@ -48,6 +48,13 @@
     return "assets/portraits/" + mod.slug + "-roster.png";
   }
 
+  function flattenRoster(mod) {
+    if (!mod.roster) return [];
+    return Object.keys(mod.roster).reduce(function (acc, klass) {
+      return acc.concat(mod.roster[klass]);
+    }, []);
+  }
+
   function portraitVersion(mod) {
     var suffix = mod.slug === "fortress" ? "-hd4-voy-v8" : "-hd4";
     return (mod.version || "") + suffix;
@@ -55,9 +62,25 @@
 
   function thumbHtml(mod) {
     var src = rosterSpriteUrl(mod);
+    var names = flattenRoster(mod);
+    var portraits = names.map(function (name, index) {
+      var col = index % 4;
+      var row = Math.floor(index / 4);
+      var x = col * (100 / 3);
+      var y = row * (100 / 3);
+      return (
+        '<span class="gallery-portrait">' +
+          '<span class="gallery-face" style="' +
+            "background-image:url('" +
+            escapeHtml(versionedUrl(src, portraitVersion(mod))) +
+            "');background-position:" + x + "% " + y + '%"></span>' +
+          "<i>" + escapeHtml(name) + "</i>" +
+        "</span>"
+      );
+    }).join("");
     return (
-      '<img src="' + escapeHtml(versionedUrl(src, portraitVersion(mod))) +
-      '" alt="Portrety — ' + escapeHtml(mod.faction) + '">'
+      '<div class="portrait-gallery" role="img" aria-label="Portrety — ' +
+      escapeHtml(mod.faction) + '">' + portraits + "</div>"
     );
   }
 
@@ -83,13 +106,6 @@
       );
     }
     return '<span class="cta cta-card disabled" aria-disabled="true">Wkrótce</span>';
-  }
-
-  function flattenRoster(mod) {
-    if (!mod.roster) return [];
-    return Object.keys(mod.roster).reduce(function (acc, klass) {
-      return acc.concat(mod.roster[klass]);
-    }, []);
   }
 
   function rosterFaceHtml(mod, name) {
