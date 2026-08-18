@@ -201,6 +201,35 @@ main {
   font-family: var(--font-display);
 }
 
+.landing-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.landing-info h2 {
+  margin: 0 0 0.25rem;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.landing-info p {
+  margin: 0;
+}
+
+.landing-info code {
+  color: var(--gold-bright);
+  font-size: 0.95em;
+}
+
 /* Cards */
 
 .section-head {
@@ -238,16 +267,12 @@ main {
   min-height: 100%;
 }
 
-.mod-card-link {
+.mod-card-content {
   display: flex;
   flex-direction: column;
   flex: 1;
   color: inherit;
   min-width: 0;
-}
-
-.mod-card-link:hover {
-  color: inherit;
 }
 
 .mod-card.is-soon {
@@ -628,3 +653,10 @@ main {
 }
 
 .footer-inner p { margin: 0.35rem 0; }
+
+@media (max-width: 560px) {
+  .landing-info {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}

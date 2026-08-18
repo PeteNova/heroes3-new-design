@@ -16,14 +16,6 @@
       .replace(/"/g, "&quot;");
   }
 
-  function findMod(slug) {
-    var mods = data().mods;
-    for (var i = 0; i < mods.length; i++) {
-      if (mods[i].slug === slug) return mods[i];
-    }
-    return null;
-  }
-
   function availableCount() {
     return data().mods.filter(function (m) { return m.status === "available"; }).length;
   }
@@ -108,20 +100,6 @@
     return '<span class="cta cta-card disabled" aria-disabled="true">Wkrótce</span>';
   }
 
-  function rosterFaceHtml(mod, name) {
-    var names = flattenRoster(mod);
-    var index = names.indexOf(name);
-    if (index < 0) return "";
-    var col = index % 4;
-    var row = Math.floor(index / 4);
-    return (
-      '<span class="roster-face" role="img" aria-hidden="true" style="' +
-      "background-image:url('" + escapeHtml(versionedUrl(rosterSpriteUrl(mod), portraitVersion(mod))) + "');" +
-      "background-position:-" + (col * 116) + "px -" + (row * 128) + "px" +
-      '"></span>'
-    );
-  }
-
   function renderHome() {
     setNav("home");
     var project = data().project;
@@ -130,7 +108,7 @@
       return (
         '<article class="mod-card frame' + (soon ? " is-soon" : "") +
         '">' +
-          '<a class="mod-card-link" href="#/mod/' + encodeURIComponent(mod.slug) + '">' +
+          '<div class="mod-card-content">' +
             '<div class="thumb">' +
               thumbHtml(mod) +
               '<span class="badge' + (soon ? " soon" : "") + '">' + statusLabel(mod) + "</span>" +
@@ -141,7 +119,7 @@
               (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</p>" +
               includesList(mod) +
             "</div>" +
-          "</a>" +
+          "</div>" +
           '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
         "</article>"
       );
@@ -159,128 +137,18 @@
           "<div><b>tylko grafika</b>bez zmian mechaniki</div>" +
         "</div>" +
       "</section>" +
+      '<section class="landing-info frame">' +
+        '<div><h2>Instalacja</h2>' +
+          '<p>Pobierz ZIP, rozpakuj go i skopiuj zawarty folder do <code>Mods</code> VCMI. Następnie włącz mod w launcherze.</p></div>' +
+        '<div><h2>Dane techniczne</h2>' +
+          '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
+          '+. Paczki zmieniają wyłącznie portrety HPL/HPS; zawierają skalę 1× oraz warianty HD tam, gdzie wskazano na karcie.</p></div>' +
+      "</section>" +
       '<div class="section-head">' +
         "<h2>Mody portretów</h2>" +
-        "<p>Każda frakcja to osobny, opcjonalny mod VCMI.</p>" +
+        "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
       "</div>" +
       '<div class="mod-grid">' + cards + "</div>";
-  }
-
-  function rosterHtml(mod) {
-    if (!mod.roster) return "";
-    var cols = Object.keys(mod.roster).map(function (klass) {
-      var names = mod.roster[klass].map(function (n) {
-        return (
-          "<li>" + rosterFaceHtml(mod, n) +
-          "<span>" + escapeHtml(n) + "</span></li>"
-        );
-      }).join("");
-      return "<div><h3>" + escapeHtml(klass) + "</h3><ul>" + names + "</ul></div>";
-    }).join("");
-    return (
-      '<section class="roster frame">' +
-        "<h2>Skład</h2>" +
-        '<div class="roster-cols">' + cols + "</div>" +
-      "</section>"
-    );
-  }
-
-  function sheetBlock(mod) {
-    if (!mod.sheet) {
-      return (
-        '<section class="sheet-wrap frame">' +
-          "<h2>Podgląd</h2>" +
-          '<div class="placeholder" style="min-height:160px">podgląd wkrótce</div>' +
-          '<p class="caption">Contact sheet oryginał vs New Design pojawi się, gdy seria będzie miała zatwierdzoną tablicę porównawczą.</p>' +
-        "</section>"
-      );
-    }
-    var hpl = "";
-    if (mod.sheetHpl) {
-      hpl =
-        "<h2>Portrety HPL</h2>" +
-        '<div class="sheet-scroll">' +
-          '<img src="' + escapeHtml(versionedUrl(mod.sheetHpl, portraitVersion(mod))) +
-          '" alt="Portrety HPL — ' +
-          escapeHtml(mod.faction) + '">' +
-        "</div>" +
-        '<p class="caption">Ten sam kadr co w paczce, wariant HD 4×.</p>';
-    }
-    return (
-      '<section class="sheet-wrap frame">' +
-        "<h2>Oryginał i New Design</h2>" +
-        '<div class="sheet-scroll">' +
-          '<img src="' + escapeHtml(versionedUrl(mod.sheet, mod.version)) +
-          '" alt="Porównanie oryginału i odświeżenia — ' +
-          escapeHtml(mod.faction) + '">' +
-        "</div>" +
-        '<p class="caption">W każdej parze: oryginał po lewej, odświeżenie po prawej. Przewiń w poziomie, jeśli tablica jest szersza niż okno.</p>' +
-        hpl +
-      "</section>"
-    );
-  }
-
-  function ctaHtml(mod) {
-    if (mod.status === "available" && mod.download) {
-      var size = mod.downloadSize ? " · " + escapeHtml(mod.downloadSize) : "";
-      return (
-        '<a class="cta" href="' + escapeHtml(versionedUrl(mod.download, mod.version)) + '" download>' +
-          "Pobierz ZIP" + size +
-        "</a>"
-      );
-    }
-    return '<span class="cta disabled" aria-disabled="true">Pobieranie wkrótce</span>';
-  }
-
-  function renderMod(slug) {
-    setNav("home");
-    var mod = findMod(slug);
-    if (!mod) {
-      app.innerHTML =
-        '<p class="crumb"><a href="#/">← Mody</a></p>' +
-        '<section class="article frame"><h1>Nie znaleziono moda</h1>' +
-        "<p>Ta frakcja nie jest jeszcze w katalogu.</p></section>";
-      return;
-    }
-
-    var version = mod.version ? "v" + escapeHtml(mod.version) : "w przygotowaniu";
-    var hdNote = mod.includes.some(function (x) { return /HD/.test(x); })
-      ? "Paczka zawiera warianty 1× oraz HD 2×/3×/4×."
-      : "Paczka v1 jest w skali 1×.";
-
-    app.innerHTML =
-      '<p class="crumb"><a href="#/">Mody</a> / ' + escapeHtml(mod.faction) + "</p>" +
-      '<section class="mod-hero frame" style="--accent:' + escapeHtml(mod.accent) + '">' +
-        "<div>" +
-          '<div class="ornament" aria-hidden="true"></div>' +
-          "<h1>" + escapeHtml(mod.name) + "</h1>" +
-          '<p class="en">' + escapeHtml(mod.nameEn) + "</p>" +
-          "<p>" + escapeHtml(mod.notes) + "</p>" +
-          '<p class="meta">' + escapeHtml(mod.classes.join(" · ")) + " · " +
-          mod.heroes + " bohaterów · " + version + "</p>" +
-          ctaHtml(mod) +
-        "</div>" +
-        "<div>" +
-          "<p><strong>W paczce</strong></p>" +
-          includesList(mod) +
-          '<p class="caption" style="margin-top:0.8rem">' + hdNote +
-          " Wymaga Heroes III oraz VCMI " + escapeHtml(data().project.vcmiMin) + "+.</p>" +
-        "</div>" +
-      "</section>" +
-      sheetBlock(mod) +
-      '<div class="two-col">' +
-        rosterHtml(mod) +
-        '<section class="prose frame">' +
-          "<h2>Jak zainstalować</h2>" +
-          "<ol class=\"steps\">" +
-            "<li>Pobierz ZIP i rozpakuj folder <code>" +
-              escapeHtml(mod.zipFolder || "heroes3-new-design-portraits-…") +
-              "</code>.</li>" +
-            "<li>Skopiuj ten folder do katalogu <code>Mods</code> VCMI.</li>" +
-            "<li>Włącz mod w launcherze. Szczegóły: <a href=\"#/instalacja\">Instalacja</a>.</li>" +
-          "</ol>" +
-        "</section>" +
-      "</div>";
   }
 
   function renderInstall() {
@@ -335,9 +203,7 @@
   function route() {
     var hash = (location.hash || "#/").replace(/^#/, "");
     var parts = hash.split("/").filter(Boolean);
-    if (parts[0] === "mod" && parts[1]) {
-      renderMod(decodeURIComponent(parts[1]));
-    } else if (parts[0] === "instalacja") {
+    if (parts[0] === "instalacja") {
       renderInstall();
     } else if (parts[0] === "o-projekcie") {
       renderAbout();
