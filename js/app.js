@@ -135,7 +135,7 @@
         "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
       "</div>" +
       '<div class="mod-grid">' + cards + "</div>" +
-      '<section class="landing-info frame">' +
+      '<section class="landing-info">' +
         '<div><h2>Instalacja</h2>' +
           '<p>Pobierz ZIP, rozpakuj go i skopiuj zawarty folder do <code>Mods</code> VCMI. Następnie włącz mod w launcherze.</p></div>' +
         '<div><h2>Dane techniczne</h2>' +
