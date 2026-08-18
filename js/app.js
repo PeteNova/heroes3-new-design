@@ -44,15 +44,21 @@
     return path + (path.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(version);
   }
 
+  function rosterSpriteUrl(mod) {
+    return "assets/portraits/" + mod.slug + "-roster.png";
+  }
+
+  function portraitVersion(mod) {
+    var suffix = mod.slug === "fortress" ? "-hd4-voy-v8" : "-hd4";
+    return (mod.version || "") + suffix;
+  }
+
   function thumbHtml(mod) {
-    var src = mod.sheetHpl || mod.sheet;
-    if (src) {
-      return (
-        '<img src="' + escapeHtml(versionedUrl(src, mod.version)) +
-        '" alt="Portrety — ' + escapeHtml(mod.faction) + '">'
-      );
-    }
-    return '<div class="placeholder">podgląd wkrótce</div>';
+    var src = rosterSpriteUrl(mod);
+    return (
+      '<img src="' + escapeHtml(versionedUrl(src, portraitVersion(mod))) +
+      '" alt="Portrety — ' + escapeHtml(mod.faction) + '">'
+    );
   }
 
   function includesList(mod) {
@@ -61,26 +67,68 @@
     }).join("") + "</ul>";
   }
 
+  function packsReadyLabel(count) {
+    var n = Number(count);
+    var noun = n === 1 ? "paczka gotowa" : n >= 2 && n <= 4 ? "paczki gotowe" : "paczek gotowych";
+    return "<div><b>" + n + "</b>" + noun + "</div>";
+  }
+
+  function cardDownloadHtml(mod) {
+    if (mod.status === "available" && mod.download) {
+      var size = mod.downloadSize ? " · " + escapeHtml(mod.downloadSize) : "";
+      return (
+        '<a class="cta cta-card" href="' +
+        escapeHtml(versionedUrl(mod.download, mod.version)) +
+        '" download>Pobierz' + size + "</a>"
+      );
+    }
+    return '<span class="cta cta-card disabled" aria-disabled="true">Wkrótce</span>';
+  }
+
+  function flattenRoster(mod) {
+    if (!mod.roster) return [];
+    return Object.keys(mod.roster).reduce(function (acc, klass) {
+      return acc.concat(mod.roster[klass]);
+    }, []);
+  }
+
+  function rosterFaceHtml(mod, name) {
+    var names = flattenRoster(mod);
+    var index = names.indexOf(name);
+    if (index < 0) return "";
+    var col = index % 4;
+    var row = Math.floor(index / 4);
+    return (
+      '<span class="roster-face" role="img" aria-hidden="true" style="' +
+      "background-image:url('" + escapeHtml(versionedUrl(rosterSpriteUrl(mod), portraitVersion(mod))) + "');" +
+      "background-position:-" + (col * 116) + "px -" + (row * 128) + "px" +
+      '"></span>'
+    );
+  }
+
   function renderHome() {
     setNav("home");
     var project = data().project;
     var cards = data().mods.map(function (mod) {
       var soon = mod.status !== "available";
       return (
-        '<a class="mod-card frame' + (soon ? " is-soon" : "") + '" href="#/mod/' +
-        encodeURIComponent(mod.slug) + '" style="--accent:' + escapeHtml(mod.accent) + '">' +
-          '<div class="thumb">' +
-            thumbHtml(mod) +
-            '<span class="badge' + (soon ? " soon" : "") + '">' + statusLabel(mod) + "</span>" +
-          "</div>" +
-          '<div class="faction-gem"></div>' +
-          '<div class="card-body">' +
-            "<h3>" + escapeHtml(mod.faction) + "</h3>" +
-            '<p class="meta">' + escapeHtml(mod.nameEn) + " · " + mod.heroes + " bohaterów" +
-            (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</p>" +
-            includesList(mod) +
-          "</div>" +
-        "</a>"
+        '<article class="mod-card frame' + (soon ? " is-soon" : "") +
+        '" style="--accent:' + escapeHtml(mod.accent) + '">' +
+          '<a class="mod-card-link" href="#/mod/' + encodeURIComponent(mod.slug) + '">' +
+            '<div class="thumb">' +
+              thumbHtml(mod) +
+              '<span class="badge' + (soon ? " soon" : "") + '">' + statusLabel(mod) + "</span>" +
+            "</div>" +
+            '<div class="faction-gem"></div>' +
+            '<div class="card-body">' +
+              "<h3>" + escapeHtml(mod.faction) + "</h3>" +
+              '<p class="meta">' + escapeHtml(mod.nameEn) + " · " + mod.heroes + " bohaterów" +
+              (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</p>" +
+              includesList(mod) +
+            "</div>" +
+          "</a>" +
+          '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
+        "</article>"
       );
     }).join("");
 
@@ -91,7 +139,7 @@
         '<p class="en">' + escapeHtml(project.taglineEn) + "</p>" +
         "<p>" + escapeHtml(project.pitch) + "</p>" +
         '<div class="stats">' +
-          "<div><b>" + availableCount() + "</b>paczki gotowe</div>" +
+          packsReadyLabel(availableCount()) +
           "<div><b>VCMI " + escapeHtml(project.vcmiMin) + "+</b>wymagane środowisko</div>" +
           "<div><b>tylko grafika</b>bez zmian mechaniki</div>" +
         "</div>" +
@@ -107,7 +155,10 @@
     if (!mod.roster) return "";
     var cols = Object.keys(mod.roster).map(function (klass) {
       var names = mod.roster[klass].map(function (n) {
-        return "<li>" + escapeHtml(n) + "</li>";
+        return (
+          "<li>" + rosterFaceHtml(mod, n) +
+          "<span>" + escapeHtml(n) + "</span></li>"
+        );
       }).join("");
       return "<div><h3>" + escapeHtml(klass) + "</h3><ul>" + names + "</ul></div>";
     }).join("");
@@ -132,13 +183,13 @@
     var hpl = "";
     if (mod.sheetHpl) {
       hpl =
-        "<h2>Skala gry (HPL 58×64)</h2>" +
+        "<h2>Portrety HPL</h2>" +
         '<div class="sheet-scroll">' +
-          '<img src="' + escapeHtml(versionedUrl(mod.sheetHpl, mod.version)) +
-          '" alt="Portrety HPL w skali gry — ' +
+          '<img src="' + escapeHtml(versionedUrl(mod.sheetHpl, portraitVersion(mod))) +
+          '" alt="Portrety HPL — ' +
           escapeHtml(mod.faction) + '">' +
         "</div>" +
-        '<p class="caption">Tak portrety wyglądają w natywnym rozmiarze interfejsu.</p>';
+        '<p class="caption">Ten sam kadr co w paczce, wariant HD 4×.</p>';
     }
     return (
       '<section class="sheet-wrap frame">' +

@@ -56,4 +56,10 @@ foreach ($pack in $packs) {
 }
 
 Remove-Item -Recurse -Force $stagingRoot
+
+$exportSprites = Join-Path $here 'export-roster-sprites.py'
+if (Test-Path $exportSprites) {
+    python $exportSprites
+}
+
 Write-Host 'Done.'
