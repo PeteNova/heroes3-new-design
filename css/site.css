@@ -378,6 +378,7 @@ main {
   margin: 0.35rem 0 0;
   font-family: var(--font-display);
   font-size: 1.15rem;
+  font-weight: 400;
   color: var(--gold-bright);
   white-space: nowrap;
 }
