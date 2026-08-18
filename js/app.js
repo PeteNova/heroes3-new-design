@@ -113,13 +113,12 @@
       var soon = mod.status !== "available";
       return (
         '<article class="mod-card frame' + (soon ? " is-soon" : "") +
-        '" style="--accent:' + escapeHtml(mod.accent) + '">' +
+        '">' +
           '<a class="mod-card-link" href="#/mod/' + encodeURIComponent(mod.slug) + '">' +
             '<div class="thumb">' +
               thumbHtml(mod) +
               '<span class="badge' + (soon ? " soon" : "") + '">' + statusLabel(mod) + "</span>" +
             "</div>" +
-            '<div class="faction-gem"></div>' +
             '<div class="card-body">' +
               "<h3>" + escapeHtml(mod.faction) + "</h3>" +
               '<p class="meta">' + escapeHtml(mod.nameEn) + " · " + mod.heroes + " bohaterów" +

@@ -321,12 +321,6 @@ main {
   flex: 1;
 }
 
-.faction-gem {
-  width: 100%;
-  height: 4px;
-  background: var(--accent, var(--gold));
-}
-
 .card-body h3 {
   margin: 0.35rem 0 0;
   font-family: var(--font-display);
