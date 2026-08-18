@@ -108,9 +108,9 @@
               '<span class="badge' + (soon ? " soon" : "") + '">' + statusLabel(mod) + "</span>" +
             "</div>" +
             '<div class="card-body">' +
-              "<h3>" + escapeHtml(mod.faction) + "</h3>" +
-              '<p class="meta">' + escapeHtml(mod.nameEn) + " · " + mod.heroes + " bohaterów" +
-              (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</p>" +
+              "<h3>" + escapeHtml(mod.faction) +
+              '<span class="card-summary"> · x' + mod.heroes +
+              (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</span></h3>" +
             "</div>" +
           "</div>" +
           '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
