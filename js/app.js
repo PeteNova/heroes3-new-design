@@ -183,7 +183,7 @@
       '<section class="article frame">' +
         '<div class="ornament" aria-hidden="true"></div>' +
         "<h1>O projekcie</h1>" +
-        "<p><strong>Heroes III — New Design</strong> odświeża wyłącznie warstwę wizualną klasyka. Gameplay, balans, muzyka i rozpoznawalny klimat świata zostają. Ta strona służy do <em>prezentacji i dystrybucji</em> gotowych modów VCMI dla fanów — nie zastępuje pipeline’u artystycznego.</p>" +
+        "<p><strong>Heroes of Might and Magic III — Graphic Mods</strong> odświeża wyłącznie warstwę wizualną klasyka. Gameplay, balans, muzyka i rozpoznawalny klimat świata zostają. Ta strona służy do <em>prezentacji i dystrybucji</em> gotowych modów VCMI dla fanów — nie zastępuje pipeline’u artystycznego.</p>" +
         "<h2>Co dostajesz</h2>" +
         "<ul>" +
           "<li>Portrety bohaterów w skali gry (HPL/HPS) oraz, tam gdzie paczka v1.1 to obejmuje, warianty HD 2×/3×/4×.</li>" +
