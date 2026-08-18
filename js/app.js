@@ -109,7 +109,7 @@
             "</div>" +
             '<div class="card-body">' +
               "<h3>" + escapeHtml(mod.faction) +
-              '<span class="card-summary"> · x' + mod.heroes +
+              '<span class="card-summary">' +
               (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</span></h3>" +
             "</div>" +
           "</div>" +
