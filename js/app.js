@@ -76,12 +76,6 @@
     );
   }
 
-  function includesList(mod) {
-    return "<ul class=\"includes-mini\">" + mod.includes.map(function (item) {
-      return "<li>" + escapeHtml(item) + "</li>";
-    }).join("") + "</ul>";
-  }
-
   function packsReadyLabel(count) {
     var n = Number(count);
     var noun = n === 1 ? "paczka gotowa" : n >= 2 && n <= 4 ? "paczki gotowe" : "paczek gotowych";
@@ -117,7 +111,6 @@
               "<h3>" + escapeHtml(mod.faction) + "</h3>" +
               '<p class="meta">' + escapeHtml(mod.nameEn) + " · " + mod.heroes + " bohaterów" +
               (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</p>" +
-              includesList(mod) +
             "</div>" +
           "</div>" +
           '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
@@ -147,7 +140,7 @@
           '<p>Pobierz ZIP, rozpakuj go i skopiuj zawarty folder do <code>Mods</code> VCMI. Następnie włącz mod w launcherze.</p></div>' +
         '<div><h2>Dane techniczne</h2>' +
           '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
-          '+. Paczki zmieniają wyłącznie portrety HPL/HPS; zawierają skalę 1× oraz warianty HD tam, gdzie wskazano na karcie.</p></div>' +
+          '+. Paczki zmieniają wyłącznie portrety: HPL 1× (58×64) i HPS 1× (48×32), plus warianty HD VCMI 2× / 3× / 4×.</p></div>' +
       "</section>";
   }
 

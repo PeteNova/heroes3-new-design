@@ -400,20 +400,6 @@ main {
   letter-spacing: 0.04em;
 }
 
-.includes-mini {
-  margin: 0.3rem 0 0;
-  padding: 0;
-  list-style: none;
-  color: var(--ink);
-  font-size: 0.88rem;
-}
-
-.includes-mini li::before {
-  content: "✦ ";
-  color: var(--gold);
-  font-size: 0.7rem;
-}
-
 /* Mod page */
 
 .crumb {
