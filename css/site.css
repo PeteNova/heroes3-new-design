@@ -500,8 +500,7 @@ main {
 
 .comparison-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .comparison-panel {
@@ -525,14 +524,8 @@ main {
   height: auto;
 }
 
-.comparison-grid .comparison-panel:first-child .comparison-scroll img {
+.comparison-grid .comparison-scroll img {
   min-width: 720px;
-}
-
-@media (max-width: 760px) {
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Mod page */

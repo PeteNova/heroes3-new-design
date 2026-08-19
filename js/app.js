@@ -103,14 +103,18 @@
   }
 
   function comparisonButtonHtml(mod) {
-    if (!mod.sheet || !mod.sheetHpl) return "";
+    if (!mod.sheet) return "";
     return (
       '<button class="compare-card" type="button" data-comparison="' +
       escapeHtml(mod.slug) + '">' +
         "<span>Porównaj warianty</span>" +
-        "<small>Oryginał · 1× · HD</small>" +
+        "<small>Oryginał · 1×</small>" +
       "</button>"
     );
+  }
+
+  function comparisonSheet1xUrl(mod) {
+    return "assets/sheets/" + mod.slug + "-original-vs-1x.png";
   }
 
   function comparisonDialogHtml(mod) {
@@ -121,16 +125,10 @@
       "</div>" +
       '<div class="comparison-grid">' +
         '<figure class="comparison-panel">' +
-          "<figcaption>Oryginał · 1×</figcaption>" +
+          "<figcaption>Oryginał po lewej · New Design 1× po prawej</figcaption>" +
           '<div class="comparison-scroll"><img src="' +
-          escapeHtml(versionedUrl(mod.sheet, mod.version)) +
+          escapeHtml(versionedUrl(comparisonSheet1xUrl(mod), mod.version)) +
           '" alt="Oryginał i wariant 1× — ' + escapeHtml(mod.faction) + '"></div>' +
-        "</figure>" +
-        '<figure class="comparison-panel">' +
-          "<figcaption>HD 4×</figcaption>" +
-          '<div class="comparison-scroll"><img src="' +
-          escapeHtml(versionedUrl(mod.sheetHpl, portraitVersion(mod))) +
-          '" alt="Wariant HD 4× — ' + escapeHtml(mod.faction) + '"></div>' +
         "</figure>" +
       "</div>"
     );
