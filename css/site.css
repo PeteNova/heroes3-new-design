@@ -385,7 +385,41 @@ main {
 }
 
 .card-actions {
+  display: grid;
+  gap: 0.45rem;
   padding: 0 1rem 0.95rem;
+}
+
+.compare-card {
+  display: grid;
+  gap: 0.1rem;
+  width: 100%;
+  padding: 0.36rem 0.7rem;
+  border: 1px solid rgba(212, 180, 106, 0.42);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  text-align: center;
+}
+
+.compare-card span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.compare-card small {
+  color: var(--ink-dim);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.compare-card:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
 }
 
 .cta-card {
@@ -402,6 +436,103 @@ main {
   font-size: 0.78rem;
   color: var(--ink-dim);
   letter-spacing: 0.04em;
+}
+
+.comparison-dialog {
+  width: min(1100px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 1.1rem;
+  overflow: auto;
+  border: 1px solid var(--gold-deep);
+  background: var(--bg-panel);
+  color: var(--ink);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.72);
+}
+
+.comparison-dialog::backdrop {
+  background: rgba(5, 4, 3, 0.78);
+}
+
+.comparison-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.comparison-dialog-head p,
+.comparison-dialog-head h2 {
+  margin: 0;
+}
+
+.comparison-dialog-head p,
+.comparison-panel figcaption {
+  color: var(--ink-dim);
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comparison-dialog-head h2 {
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.comparison-close {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.comparison-close:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+  gap: 1rem;
+}
+
+.comparison-panel {
+  min-width: 0;
+  margin: 0;
+}
+
+.comparison-panel figcaption {
+  margin-bottom: 0.4rem;
+}
+
+.comparison-scroll {
+  overflow: auto;
+  border: 1px solid var(--line);
+  background: #080706;
+}
+
+.comparison-scroll img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.comparison-grid .comparison-panel:first-child .comparison-scroll img {
+  min-width: 720px;
+}
+
+@media (max-width: 760px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Mod page */

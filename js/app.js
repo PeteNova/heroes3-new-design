@@ -8,6 +8,14 @@
     return window.H3ND_MODS;
   }
 
+  function findMod(slug) {
+    var mods = data().mods;
+    for (var i = 0; i < mods.length; i++) {
+      if (mods[i].slug === slug) return mods[i];
+    }
+    return null;
+  }
+
   function escapeHtml(value) {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -94,6 +102,60 @@
     return '<span class="cta cta-card disabled" aria-disabled="true">Wkrótce</span>';
   }
 
+  function comparisonButtonHtml(mod) {
+    if (!mod.sheet || !mod.sheetHpl) return "";
+    return (
+      '<button class="compare-card" type="button" data-comparison="' +
+      escapeHtml(mod.slug) + '">' +
+        "<span>Porównaj warianty</span>" +
+        "<small>Oryginał · 1× · HD</small>" +
+      "</button>"
+    );
+  }
+
+  function comparisonDialogHtml(mod) {
+    return (
+      '<div class="comparison-dialog-head">' +
+        "<div><p>Porównaj warianty</p><h2>" + escapeHtml(mod.faction) + "</h2></div>" +
+        '<button class="comparison-close" type="button" aria-label="Zamknij porównanie">×</button>' +
+      "</div>" +
+      '<div class="comparison-grid">' +
+        '<figure class="comparison-panel">' +
+          "<figcaption>Oryginał · 1×</figcaption>" +
+          '<div class="comparison-scroll"><img src="' +
+          escapeHtml(versionedUrl(mod.sheet, mod.version)) +
+          '" alt="Oryginał i wariant 1× — ' + escapeHtml(mod.faction) + '"></div>' +
+        "</figure>" +
+        '<figure class="comparison-panel">' +
+          "<figcaption>HD 4×</figcaption>" +
+          '<div class="comparison-scroll"><img src="' +
+          escapeHtml(versionedUrl(mod.sheetHpl, portraitVersion(mod))) +
+          '" alt="Wariant HD 4× — ' + escapeHtml(mod.faction) + '"></div>' +
+        "</figure>" +
+      "</div>"
+    );
+  }
+
+  function openComparison(slug) {
+    var mod = findMod(slug);
+    var dialog = document.getElementById("comparison-dialog");
+    if (!mod || !dialog) return;
+    dialog.innerHTML = comparisonDialogHtml(mod);
+    dialog.showModal();
+    dialog.querySelector(".comparison-close").addEventListener("click", function () {
+      dialog.close();
+    });
+  }
+
+  function bindComparisonButtons() {
+    var buttons = app.querySelectorAll("[data-comparison]");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        openComparison(button.getAttribute("data-comparison"));
+      });
+    });
+  }
+
   function renderHome() {
     setNav("home");
     var project = data().project;
@@ -113,7 +175,10 @@
               (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</span></h3>" +
             "</div>" +
           "</div>" +
-          '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
+          '<div class="card-actions">' +
+            comparisonButtonHtml(mod) +
+            cardDownloadHtml(mod) +
+          "</div>" +
         "</article>"
       );
     }).join("");
@@ -141,6 +206,7 @@
           '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
           '+.</p><p>Paczki zmieniają wyłącznie portrety: HPL 1× (58×64) i HPS 1× (48×32), plus warianty HD VCMI 2× / 3× / 4×.</p></div>' +
       "</section>";
+    bindComparisonButtons();
   }
 
   function renderInstall() {
@@ -207,5 +273,9 @@
   }
 
   window.addEventListener("hashchange", route);
+  document.addEventListener("click", function (event) {
+    var dialog = event.target;
+    if (dialog && dialog.id === "comparison-dialog") dialog.close();
+  });
   route();
 })();
