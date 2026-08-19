@@ -8,14 +8,6 @@
     return window.H3ND_MODS;
   }
 
-  function findMod(slug) {
-    var mods = data().mods;
-    for (var i = 0; i < mods.length; i++) {
-      if (mods[i].slug === slug) return mods[i];
-    }
-    return null;
-  }
-
   function escapeHtml(value) {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -48,6 +40,10 @@
     return "assets/portraits/" + mod.slug + "-roster.png";
   }
 
+  function originalRosterSpriteUrl(mod) {
+    return "assets/portraits/" + mod.slug + "-original-roster.png";
+  }
+
   function flattenRoster(mod) {
     if (!mod.roster) return [];
     return Object.keys(mod.roster).reduce(function (acc, klass) {
@@ -62,24 +58,33 @@
 
   function thumbHtml(mod) {
     var src = rosterSpriteUrl(mod);
+    var originalSrc = originalRosterSpriteUrl(mod);
     var names = flattenRoster(mod);
     var portraits = names.map(function (name, index) {
       var col = index % 4;
       var row = Math.floor(index / 4);
-      var x = col * (100 / 3);
-      var y = row * (100 / 3);
+      var pos = col * (100 / 3) + "% " + row * (100 / 3) + "%";
       return (
         '<span class="gallery-portrait">' +
-          '<span class="gallery-face" style="' +
-            "background-image:url('" +
-            escapeHtml(versionedUrl(src, portraitVersion(mod))) +
-            "');background-position:" + x + "% " + y + '%"></span>' +
+          '<button class="gallery-flip" type="button" aria-pressed="false" aria-label="' +
+          escapeHtml(name) + ' — pokaż oryginał">' +
+            '<span class="gallery-flip-inner">' +
+              '<span class="gallery-face is-mod" style="' +
+                "background-image:url('" +
+                escapeHtml(versionedUrl(src, portraitVersion(mod))) +
+                "');background-position:" + pos + '"></span>' +
+              '<span class="gallery-face is-original" style="' +
+                "background-image:url('" +
+                escapeHtml(versionedUrl(originalSrc, (mod.version || "") + "-original")) +
+                "');background-position:" + pos + '"></span>' +
+            "</span>" +
+          "</button>" +
           "<i>" + escapeHtml(name) + "</i>" +
         "</span>"
       );
     }).join("");
     return (
-      '<div class="portrait-gallery" role="img" aria-label="Portrety — ' +
+      '<div class="portrait-gallery" aria-label="Portrety — ' +
       escapeHtml(mod.faction) + '">' + portraits + "</div>"
     );
   }
@@ -102,58 +107,6 @@
     return '<span class="cta cta-card disabled" aria-disabled="true">Wkrótce</span>';
   }
 
-  function comparisonButtonHtml(mod) {
-    if (!mod.sheet) return "";
-    return (
-      '<button class="compare-card" type="button" data-comparison="' +
-      escapeHtml(mod.slug) + '">' +
-        "<span>Zobacz porównanie</span>" +
-        "<small>Heroes III — oryginał · mod — 1×</small>" +
-      "</button>"
-    );
-  }
-
-  function comparisonSheet1xUrl(mod) {
-    return "assets/sheets/" + mod.slug + "-original-vs-1x.png";
-  }
-
-  function comparisonDialogHtml(mod) {
-    return (
-      '<div class="comparison-dialog-head">' +
-        "<div><p>Porównaj warianty</p><h2>" + escapeHtml(mod.faction) + "</h2></div>" +
-        '<button class="comparison-close" type="button" aria-label="Zamknij porównanie">×</button>' +
-      "</div>" +
-      '<div class="comparison-grid">' +
-        '<figure class="comparison-panel">' +
-          "<figcaption>Oryginał po lewej · New Design 1× po prawej</figcaption>" +
-          '<div class="comparison-scroll"><img src="' +
-          escapeHtml(versionedUrl(comparisonSheet1xUrl(mod), mod.version)) +
-          '" alt="Oryginał i wariant 1× — ' + escapeHtml(mod.faction) + '"></div>' +
-        "</figure>" +
-      "</div>"
-    );
-  }
-
-  function openComparison(slug) {
-    var mod = findMod(slug);
-    var dialog = document.getElementById("comparison-dialog");
-    if (!mod || !dialog) return;
-    dialog.innerHTML = comparisonDialogHtml(mod);
-    dialog.showModal();
-    dialog.querySelector(".comparison-close").addEventListener("click", function () {
-      dialog.close();
-    });
-  }
-
-  function bindComparisonButtons() {
-    var buttons = app.querySelectorAll("[data-comparison]");
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        openComparison(button.getAttribute("data-comparison"));
-      });
-    });
-  }
-
   function renderHome() {
     setNav("home");
     var project = data().project;
@@ -173,10 +126,7 @@
               (mod.version ? " · v" + escapeHtml(mod.version) : "") + "</span></h3>" +
             "</div>" +
           "</div>" +
-          '<div class="card-actions">' +
-            comparisonButtonHtml(mod) +
-            cardDownloadHtml(mod) +
-          "</div>" +
+          '<div class="card-actions">' + cardDownloadHtml(mod) + "</div>" +
         "</article>"
       );
     }).join("");
@@ -204,7 +154,6 @@
           '<p>Wymagane: legalna kopia Heroes III oraz VCMI ' + escapeHtml(project.vcmiMin) +
           '+.</p><p>Paczki zmieniają wyłącznie portrety: HPL 1× (58×64) i HPS 1× (48×32), plus warianty HD VCMI 2× / 3× / 4×.</p></div>' +
       "</section>";
-    bindComparisonButtons();
   }
 
   function renderInstall() {
@@ -271,9 +220,16 @@
   }
 
   window.addEventListener("hashchange", route);
-  document.addEventListener("click", function (event) {
-    var dialog = event.target;
-    if (dialog && dialog.id === "comparison-dialog") dialog.close();
+  app.addEventListener("click", function (event) {
+    var button = event.target.closest(".gallery-flip");
+    if (!button || !app.contains(button)) return;
+    var flipped = button.classList.toggle("is-flipped");
+    button.setAttribute("aria-pressed", String(flipped));
+    var name = button.nextElementSibling ? button.nextElementSibling.textContent : "Bohater";
+    button.setAttribute(
+      "aria-label",
+      name + (flipped ? " — pokaż mod" : " — pokaż oryginał")
+    );
   });
   route();
 })();

@@ -23,6 +23,7 @@ CELL = (116, 128)
 HPL_CELL = (232, 256)
 HPL_LABEL = 30
 HPL_PAD = 12
+EXTRACTED = ROOT / "staging" / "hero-portraits-v1" / "extracted"
 WEB_OVERRIDES = {
     ("fortress", "voy"): OUT_DIR / "voy-fortress-v1-8.png",
 }
@@ -215,11 +216,28 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
         return portrait.copy()
 
 
-def write_roster(names: list[str], portraits: list[Image.Image], dest: Path) -> None:
+def load_original(hero: str) -> Image.Image:
+    hpl = HPL.get(hero)
+    if not hpl:
+        raise SystemExit(f"No HPL id for {hero}")
+    for extension in (".bmp", ".png", ".PNG"):
+        src = EXTRACTED / f"{hpl}{extension}"
+        if src.is_file():
+            with Image.open(src) as image:
+                return image.convert("RGBA").copy()
+    raise SystemExit(f"Missing original portrait for {hero}: {hpl}")
+
+
+def write_roster(
+    names: list[str],
+    portraits: list[Image.Image],
+    dest: Path,
+    resampling: Image.Resampling = Image.Resampling.LANCZOS,
+) -> None:
     rows = (len(names) + COLS - 1) // COLS
     sheet = Image.new("RGBA", (COLS * CELL[0], rows * CELL[1]), (0, 0, 0, 0))
     for index, portrait in enumerate(portraits):
-        thumb = portrait.resize(CELL, Image.Resampling.LANCZOS)
+        thumb = portrait.resize(CELL, resampling)
         col, row = index % COLS, index // COLS
         sheet.paste(thumb, (col * CELL[0], row * CELL[1]))
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -266,11 +284,14 @@ def main() -> None:
         portraits = [
             load_hpl4x(slug, build_name, slugify(name)) for name in names
         ]
+        originals = [load_original(slugify(name)) for name in names]
         roster = OUT_DIR / f"{slug}-roster.png"
+        original_roster = OUT_DIR / f"{slug}-original-roster.png"
         hpl_sheet = SHEET_DIR / f"{slug}-hpl.png"
         write_roster(names, portraits, roster)
+        write_roster(names, originals, original_roster, Image.Resampling.NEAREST)
         write_hpl_sheet(names, portraits, hpl_sheet)
-        print(f"{slug}: {roster.name} + {hpl_sheet.name}")
+        print(f"{slug}: {roster.name} + {original_roster.name} + {hpl_sheet.name}")
 
 
 if __name__ == "__main__":

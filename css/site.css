@@ -276,7 +276,7 @@ main {
 .thumb {
   background: #090806;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-bottom: 1px solid var(--line);
 }
 
@@ -300,12 +300,50 @@ main {
   border-right: 0;
 }
 
-.gallery-face {
+.gallery-flip {
   display: block;
   width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
   aspect-ratio: 116 / 128;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.gallery-flip-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 116 / 128;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+.gallery-flip.is-flipped .gallery-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.gallery-face {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: 400% 400%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.gallery-face.is-original {
+  transform: rotateY(180deg);
+  image-rendering: pixelated;
+}
+
+.gallery-flip:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .gallery-portrait i {
@@ -385,41 +423,7 @@ main {
 }
 
 .card-actions {
-  display: grid;
-  gap: 0.45rem;
   padding: 0 1rem 0.95rem;
-}
-
-.compare-card {
-  display: grid;
-  gap: 0.1rem;
-  width: 100%;
-  padding: 0.36rem 0.7rem;
-  border: 1px solid rgba(212, 180, 106, 0.42);
-  background: transparent;
-  color: var(--gold);
-  cursor: pointer;
-  font-family: var(--font-ui);
-  text-align: center;
-}
-
-.compare-card span {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.compare-card small {
-  color: var(--ink-dim);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  opacity: 0.7;
-}
-
-.compare-card:hover {
-  border-color: var(--gold);
-  color: var(--gold-bright);
 }
 
 .cta-card {
@@ -436,96 +440,6 @@ main {
   font-size: 0.78rem;
   color: var(--ink-dim);
   letter-spacing: 0.04em;
-}
-
-.comparison-dialog {
-  width: min(1100px, calc(100vw - 2rem));
-  max-height: calc(100vh - 2rem);
-  padding: 1.1rem;
-  overflow: auto;
-  border: 1px solid var(--gold-deep);
-  background: var(--bg-panel);
-  color: var(--ink);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.72);
-}
-
-.comparison-dialog::backdrop {
-  background: rgba(5, 4, 3, 0.78);
-}
-
-.comparison-dialog-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-}
-
-.comparison-dialog-head p,
-.comparison-dialog-head h2 {
-  margin: 0;
-}
-
-.comparison-dialog-head p,
-.comparison-panel figcaption {
-  color: var(--ink-dim);
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.comparison-dialog-head h2 {
-  color: var(--gold-bright);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-}
-
-.comparison-close {
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--gold);
-  cursor: pointer;
-  font-family: var(--font-ui);
-  font-size: 1.35rem;
-  line-height: 1;
-}
-
-.comparison-close:hover {
-  border-color: var(--gold);
-  color: var(--gold-bright);
-}
-
-.comparison-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.comparison-panel {
-  min-width: 0;
-  margin: 0;
-}
-
-.comparison-panel figcaption {
-  margin-bottom: 0.4rem;
-}
-
-.comparison-scroll {
-  overflow: auto;
-  border: 1px solid var(--line);
-  background: #080706;
-}
-
-.comparison-scroll img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.comparison-grid .comparison-scroll img {
-  min-width: 720px;
 }
 
 /* Mod page */
