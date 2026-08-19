@@ -144,7 +144,10 @@
       "</section>" +
       '<div class="section-head">' +
         "<h2>Mody portretów</h2>" +
-        "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
+        '<div class="section-copy">' +
+          "<p>Każda frakcja to osobny, opcjonalny mod VCMI do pobrania.</p>" +
+          "<p>Kliknij portret, żeby zobaczyć oryginał Heroes III.</p>" +
+        "</div>" +
       "</div>" +
       '<div class="mod-grid">' + cards + "</div>" +
       '<section class="landing-info">' +
