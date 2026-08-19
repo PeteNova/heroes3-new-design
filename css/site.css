@@ -516,6 +516,7 @@ main {
   overflow: auto;
   border: 1px solid var(--line);
   background: #080706;
+  cursor: zoom-in;
 }
 
 .comparison-scroll img {
@@ -526,6 +527,20 @@ main {
 
 .comparison-grid .comparison-scroll img {
   min-width: 720px;
+}
+
+.comparison-scroll:focus-visible {
+  outline: 1px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+.comparison-scroll.is-zoomed {
+  cursor: zoom-out;
+}
+
+.comparison-scroll.is-zoomed img {
+  width: 220%;
+  max-width: none;
 }
 
 /* Mod page */

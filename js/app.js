@@ -126,7 +126,8 @@
       '<div class="comparison-grid">' +
         '<figure class="comparison-panel">' +
           "<figcaption>Oryginał po lewej · New Design 1× po prawej</figcaption>" +
-          '<div class="comparison-scroll"><img src="' +
+          '<div class="comparison-scroll" tabindex="0" role="button" aria-pressed="false" aria-label="Powiększ porównanie">' +
+          '<img src="' +
           escapeHtml(versionedUrl(comparisonSheet1xUrl(mod), mod.version)) +
           '" alt="Oryginał i wariant 1× — ' + escapeHtml(mod.faction) + '"></div>' +
         "</figure>" +
@@ -142,6 +143,22 @@
     dialog.showModal();
     dialog.querySelector(".comparison-close").addEventListener("click", function () {
       dialog.close();
+    });
+    var comparison = dialog.querySelector(".comparison-scroll");
+    function toggleZoom() {
+      var zoomed = comparison.classList.toggle("is-zoomed");
+      comparison.setAttribute("aria-pressed", String(zoomed));
+      comparison.setAttribute(
+        "aria-label",
+        zoomed ? "Pomniejsz porównanie" : "Powiększ porównanie"
+      );
+    }
+    comparison.addEventListener("click", toggleZoom);
+    comparison.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleZoom();
+      }
     });
   }
 
