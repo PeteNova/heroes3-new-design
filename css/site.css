@@ -168,16 +168,6 @@ main {
   text-shadow: 0 2px 0 #000, 0 0 24px rgba(212, 180, 106, 0.25);
 }
 
-.hero .en {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  letter-spacing: 0.03em;
-  text-align: center;
-  text-transform: none;
-  color: var(--gold);
-  margin: 0 0 1rem;
-}
-
 .hero p {
   max-width: 46rem;
   margin: 0 auto 1.4rem;

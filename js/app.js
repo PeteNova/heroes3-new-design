@@ -121,7 +121,6 @@
     app.innerHTML =
       '<section class="hero frame">' +
         '<div class="ornament" aria-hidden="true"></div>' +
-        '<p class="en">' + escapeHtml(project.taglineEn) + "</p>" +
         "<h1>" + escapeHtml(project.name) + "</h1>" +
         "<p>" + escapeHtml(project.pitch) + "</p>" +
         '<div class="stats">' +
