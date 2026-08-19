@@ -16,14 +16,14 @@
       "factionEn": "Castle",
       "classes": ["Rycerze", "Klerycy"],
       "status": "available",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 rycerzy i kleryków Erathii. Kadry v1-5 zachowują hełmy, kaptury i charakterystyczne sylwetki oryginału.",
+      "notes": "Pełny skład 16 rycerzy i kleryków Erathii. Kadry v1-5 zachowują hełmy, kaptury i charakterystyczne sylwetki oryginału. v1.1.1: Edric, Cuthbert i Caitlin lekko wyżej w kadrze.",
       "sheet": "assets/sheets/castle-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/castle-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-castle-v1.zip",
@@ -44,14 +44,14 @@
       "factionEn": "Rampart",
       "classes": ["Rangerzy", "Druidzi"],
       "status": "available",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 rangerów i druidów AvLee, w tym Mephala. Paleta lasu oraz nieludzkie anatomie zachowane z oryginału.",
+      "notes": "Pełny skład 16 rangerów i druidów AvLee, w tym Mephala. Paleta lasu oraz nieludzkie anatomie zachowane z oryginału. v1.2.1: Thorgrim lekko wyżej w kadrze.",
       "sheet": "assets/sheets/rampart-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/rampart-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-rampart-v1.zip",
