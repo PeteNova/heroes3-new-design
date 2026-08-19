@@ -107,8 +107,8 @@
     return (
       '<button class="compare-card" type="button" data-comparison="' +
       escapeHtml(mod.slug) + '">' +
-        "<span>Porównaj warianty</span>" +
-        "<small>Oryginał · 1×</small>" +
+        "<span>Zobacz porównanie</span>" +
+        "<small>Heroes III — oryginał · mod — 1×</small>" +
       "</button>"
     );
   }
