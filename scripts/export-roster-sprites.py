@@ -38,7 +38,10 @@ BUILD = {
     "stronghold": "vcmi-hero-portraits-stronghold-v1",
     "fortress": "vcmi-hero-portraits-fortress-v1",
     "conflux": "vcmi-hero-portraits-conflux-v1",
+    "factory": "vcmi-hero-portraits-factory-v1",
 }
+
+FACTORY_EXTRACTED = ROOT / "staging" / "hero-portraits-factory-v1" / "extracted"
 
 HPL = {
     "orrin": "HPL000KN",
@@ -185,6 +188,23 @@ HPL = {
     "aenain": "HPL005EL",
     "gelare": "HPL006EL",
     "grindan": "HPL007EL",
+    # Factory (HotA) — no HPL codes; slug is the portrait key
+    "henrietta": "FACTORY",
+    "sam": "FACTORY",
+    "tancred": "FACTORY",
+    "melchior": "FACTORY",
+    "floribert": "FACTORY",
+    "wynona": "FACTORY",
+    "dury": "FACTORY",
+    "morton": "FACTORY",
+    "celestine": "FACTORY",
+    "todd": "FACTORY",
+    "agar": "FACTORY",
+    "bertram": "FACTORY",
+    "wrathmont": "FACTORY",
+    "ziph": "FACTORY",
+    "victoria": "FACTORY",
+    "eanswythe": "FACTORY",
 }
 
 
@@ -200,13 +220,28 @@ def flatten_roster(mod: dict) -> list[str]:
 
 
 def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
-    hpl = HPL.get(hero)
-    if not hpl:
-        raise SystemExit(f"No HPL id for {hero}")
-    src = WEB_OVERRIDES.get(
-        (faction, hero),
-        ROOT / "build" / build_name / "Content" / "Data4x" / f"{hpl}.PNG",
-    )
+    override = WEB_OVERRIDES.get((faction, hero))
+    if override is not None:
+        src = override
+    elif faction == "factory":
+        src = (
+            ROOT
+            / "build"
+            / build_name
+            / "Content"
+            / "sprites4x"
+            / "hota"
+            / "factory"
+            / "heroes"
+            / hero
+            / "icons"
+            / "portraitLarge.png"
+        )
+    else:
+        hpl = HPL.get(hero)
+        if not hpl or hpl == "FACTORY":
+            raise SystemExit(f"No HPL id for {hero}")
+        src = ROOT / "build" / build_name / "Content" / "Data4x" / f"{hpl}.PNG"
     if not src.is_file():
         raise SystemExit(f"Missing {src}")
     with Image.open(src) as image:
@@ -216,7 +251,13 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
         return portrait.copy()
 
 
-def load_original(hero: str) -> Image.Image:
+def load_original(hero: str, *, faction: str | None = None) -> Image.Image:
+    if faction == "factory" or HPL.get(hero) == "FACTORY":
+        src = FACTORY_EXTRACTED / f"{hero}-portraitLarge.png"
+        if not src.is_file():
+            raise SystemExit(f"Missing original HotA portrait for {hero}: {src}")
+        with Image.open(src) as image:
+            return image.convert("RGBA").copy()
     hpl = HPL.get(hero)
     if not hpl:
         raise SystemExit(f"No HPL id for {hero}")
@@ -284,7 +325,7 @@ def main() -> None:
         portraits = [
             load_hpl4x(slug, build_name, slugify(name)) for name in names
         ]
-        originals = [load_original(slugify(name)) for name in names]
+        originals = [load_original(slugify(name), faction=slug) for name in names]
         roster = OUT_DIR / f"{slug}-roster.png"
         original_roster = OUT_DIR / f"{slug}-original-roster.png"
         hpl_sheet = SHEET_DIR / f"{slug}-hpl.png"

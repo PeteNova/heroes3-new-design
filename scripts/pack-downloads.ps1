@@ -20,7 +20,8 @@ $packs = @(
     @{ Build = 'vcmi-hero-portraits-dungeon-v1';     ZipFolder = 'heroes3-new-design-portraits-dungeon-v1' },
     @{ Build = 'vcmi-hero-portraits-stronghold-v1';  ZipFolder = 'heroes3-new-design-portraits-stronghold-v1' },
     @{ Build = 'vcmi-hero-portraits-fortress-v1';    ZipFolder = 'heroes3-new-design-portraits-fortress-v1' },
-    @{ Build = 'vcmi-hero-portraits-conflux-v1';     ZipFolder = 'heroes3-new-design-portraits-conflux-v1' }
+    @{ Build = 'vcmi-hero-portraits-conflux-v1';     ZipFolder = 'heroes3-new-design-portraits-conflux-v1' },
+    @{ Build = 'vcmi-hero-portraits-factory-v1';     ZipFolder = 'heroes3-new-design-portraits-factory-v1' }
 )
 
 New-Item -ItemType Directory -Force -Path $downloads | Out-Null

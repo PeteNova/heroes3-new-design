@@ -15,7 +15,10 @@ window.H3ND_MODS = {
       "nameEn": "Castle Hero Portraits",
       "faction": "Zamek",
       "factionEn": "Castle",
-      "classes": ["Rycerze", "Klerycy"],
+      "classes": [
+        "Rycerze",
+        "Klerycy"
+      ],
       "status": "available",
       "version": "1.1.1",
       "heroes": 16,
@@ -32,8 +35,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-castle-v1",
       "accent": "#c9b37a",
       "roster": {
-        "Rycerze": ["Orrin", "Valeska", "Edric", "Sylvia", "Lord Haart", "Sorsha", "Christian", "Tyris"],
-        "Klerycy": ["Rion", "Adela", "Cuthbert", "Adelaide", "Ingham", "Sanya", "Loynis", "Caitlin"]
+        "Rycerze": [
+          "Orrin",
+          "Valeska",
+          "Edric",
+          "Sylvia",
+          "Lord Haart",
+          "Sorsha",
+          "Christian",
+          "Tyris"
+        ],
+        "Klerycy": [
+          "Rion",
+          "Adela",
+          "Cuthbert",
+          "Adelaide",
+          "Ingham",
+          "Sanya",
+          "Loynis",
+          "Caitlin"
+        ]
       }
     },
     {
@@ -43,7 +64,10 @@ window.H3ND_MODS = {
       "nameEn": "Rampart Hero Portraits",
       "faction": "Bastion",
       "factionEn": "Rampart",
-      "classes": ["Rangerzy", "Druidzi"],
+      "classes": [
+        "Rangerzy",
+        "Druidzi"
+      ],
       "status": "available",
       "version": "1.2.1",
       "heroes": 16,
@@ -60,8 +84,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-rampart-v1",
       "accent": "#6f8f4e",
       "roster": {
-        "Rangerzy": ["Mephala", "Ufretin", "Jenova", "Ryland", "Thorgrim", "Ivor", "Clancy", "Kyrre"],
-        "Druidzi": ["Coronius", "Uland", "Elleshar", "Gem", "Malcom", "Melodia", "Alagar", "Aeris"]
+        "Rangerzy": [
+          "Mephala",
+          "Ufretin",
+          "Jenova",
+          "Ryland",
+          "Thorgrim",
+          "Ivor",
+          "Clancy",
+          "Kyrre"
+        ],
+        "Druidzi": [
+          "Coronius",
+          "Uland",
+          "Elleshar",
+          "Gem",
+          "Malcom",
+          "Melodia",
+          "Alagar",
+          "Aeris"
+        ]
       }
     },
     {
@@ -71,7 +113,10 @@ window.H3ND_MODS = {
       "nameEn": "Tower Hero Portraits",
       "faction": "Wieża",
       "factionEn": "Tower",
-      "classes": ["Alchemicy", "Magowie"],
+      "classes": [
+        "Alchemicy",
+        "Magowie"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -88,8 +133,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-tower-v1",
       "accent": "#5b8fd4",
       "roster": {
-        "Alchemicy": ["Piquedram", "Thane", "Josephine", "Neela", "Torosar", "Fafner", "Rissa", "Iona"],
-        "Magowie": ["Astral", "Halon", "Serena", "Daremyth", "Theodorus", "Solmyr", "Cyra", "Aine"]
+        "Alchemicy": [
+          "Piquedram",
+          "Thane",
+          "Josephine",
+          "Neela",
+          "Torosar",
+          "Fafner",
+          "Rissa",
+          "Iona"
+        ],
+        "Magowie": [
+          "Astral",
+          "Halon",
+          "Serena",
+          "Daremyth",
+          "Theodorus",
+          "Solmyr",
+          "Cyra",
+          "Aine"
+        ]
       }
     },
     {
@@ -99,7 +162,10 @@ window.H3ND_MODS = {
       "nameEn": "Inferno Hero Portraits",
       "faction": "Inferno",
       "factionEn": "Inferno",
-      "classes": ["Demoniacy", "Heretycy"],
+      "classes": [
+        "Demoniacy",
+        "Heretycy"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -116,8 +182,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-inferno-v1",
       "accent": "#c45c3a",
       "roster": {
-        "Demoniacy": ["Fiona", "Rashka", "Marius", "Ignatius", "Octavia", "Calh", "Pyre", "Nymus"],
-        "Heretycy": ["Ayden", "Xyron", "Axsis", "Xarfax", "Zydar", "Olema", "Calid", "Ash"]
+        "Demoniacy": [
+          "Fiona",
+          "Rashka",
+          "Marius",
+          "Ignatius",
+          "Octavia",
+          "Calh",
+          "Pyre",
+          "Nymus"
+        ],
+        "Heretycy": [
+          "Ayden",
+          "Xyron",
+          "Axsis",
+          "Xarfax",
+          "Zydar",
+          "Olema",
+          "Calid",
+          "Ash"
+        ]
       }
     },
     {
@@ -127,7 +211,10 @@ window.H3ND_MODS = {
       "nameEn": "Necropolis Hero Portraits",
       "faction": "Nekropolia",
       "factionEn": "Necropolis",
-      "classes": ["Rycerze Śmierci", "Nekromanci"],
+      "classes": [
+        "Rycerze Śmierci",
+        "Nekromanci"
+      ],
       "status": "available",
       "version": "1.2.0",
       "heroes": 16,
@@ -144,8 +231,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-necropolis-v1",
       "accent": "#8b6bb0",
       "roster": {
-        "Rycerze Śmierci": ["Straker", "Vokial", "Moandor", "Charna", "Tamika", "Isra", "Clavius", "Galthran"],
-        "Nekromanci": ["Septienna", "Aislinn", "Sandro", "Nimbus", "Thant", "Xsi", "Vidomina", "Nagash"]
+        "Rycerze Śmierci": [
+          "Straker",
+          "Vokial",
+          "Moandor",
+          "Charna",
+          "Tamika",
+          "Isra",
+          "Clavius",
+          "Galthran"
+        ],
+        "Nekromanci": [
+          "Septienna",
+          "Aislinn",
+          "Sandro",
+          "Nimbus",
+          "Thant",
+          "Xsi",
+          "Vidomina",
+          "Nagash"
+        ]
       }
     },
     {
@@ -155,7 +260,10 @@ window.H3ND_MODS = {
       "nameEn": "Dungeon Hero Portraits",
       "faction": "Lochy",
       "factionEn": "Dungeon",
-      "classes": ["Overlordzi", "Warlockowie"],
+      "classes": [
+        "Overlordzi",
+        "Warlockowie"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -172,8 +280,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-dungeon-v1",
       "accent": "#9a4d9e",
       "roster": {
-        "Overlordzi": ["Lorelei", "Arlach", "Dace", "Ajit", "Damacon", "Gunnar", "Synca", "Shakti"],
-        "Warlockowie": ["Alamar", "Jaegar", "Malekith", "Jeddite", "Geon", "Deemer", "Sephinroth", "Darkstorn"]
+        "Overlordzi": [
+          "Lorelei",
+          "Arlach",
+          "Dace",
+          "Ajit",
+          "Damacon",
+          "Gunnar",
+          "Synca",
+          "Shakti"
+        ],
+        "Warlockowie": [
+          "Alamar",
+          "Jaegar",
+          "Malekith",
+          "Jeddite",
+          "Geon",
+          "Deemer",
+          "Sephinroth",
+          "Darkstorn"
+        ]
       }
     },
     {
@@ -183,7 +309,10 @@ window.H3ND_MODS = {
       "nameEn": "Stronghold Hero Portraits",
       "faction": "Twierdza",
       "factionEn": "Stronghold",
-      "classes": ["Barbarzyńcy", "Magowie Bitewni"],
+      "classes": [
+        "Barbarzyńcy",
+        "Magowie Bitewni"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -200,8 +329,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-stronghold-v1",
       "accent": "#c47a3a",
       "roster": {
-        "Barbarzyńcy": ["Yog", "Gurnisson", "Jabarkas", "Shiva", "Gretchin", "Krellion", "Crag Hack", "Tyraxor"],
-        "Magowie Bitewni": ["Gird", "Vey", "Dessa", "Terek", "Zubin", "Gundula", "Oris", "Saurug"]
+        "Barbarzyńcy": [
+          "Yog",
+          "Gurnisson",
+          "Jabarkas",
+          "Shiva",
+          "Gretchin",
+          "Krellion",
+          "Crag Hack",
+          "Tyraxor"
+        ],
+        "Magowie Bitewni": [
+          "Gird",
+          "Vey",
+          "Dessa",
+          "Terek",
+          "Zubin",
+          "Gundula",
+          "Oris",
+          "Saurug"
+        ]
       }
     },
     {
@@ -211,7 +358,10 @@ window.H3ND_MODS = {
       "nameEn": "Fortress Hero Portraits",
       "faction": "Cytadela",
       "factionEn": "Fortress",
-      "classes": ["Bestmasterzy", "Wiedźmy"],
+      "classes": [
+        "Bestmasterzy",
+        "Wiedźmy"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -228,8 +378,26 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-fortress-v1",
       "accent": "#4a7a4a",
       "roster": {
-        "Bestmasterzy": ["Bron", "Drakon", "Wystan", "Tazar", "Alkin", "Korbac", "Gerwulf", "Broghild"],
-        "Wiedźmy": ["Mirlanda", "Rosic", "Voy", "Verdish", "Merist", "Styg", "Andra", "Tiva"]
+        "Bestmasterzy": [
+          "Bron",
+          "Drakon",
+          "Wystan",
+          "Tazar",
+          "Alkin",
+          "Korbac",
+          "Gerwulf",
+          "Broghild"
+        ],
+        "Wiedźmy": [
+          "Mirlanda",
+          "Rosic",
+          "Voy",
+          "Verdish",
+          "Merist",
+          "Styg",
+          "Andra",
+          "Tiva"
+        ]
       }
     },
     {
@@ -239,7 +407,10 @@ window.H3ND_MODS = {
       "nameEn": "Conflux Hero Portraits",
       "faction": "Wrota Żywiołów",
       "factionEn": "Conflux",
-      "classes": ["Planeswalkerzy", "Elementaliści"],
+      "classes": [
+        "Planeswalkerzy",
+        "Elementaliści"
+      ],
       "status": "available",
       "version": "1.1.0",
       "heroes": 16,
@@ -256,8 +427,75 @@ window.H3ND_MODS = {
       "zipFolder": "heroes3-new-design-portraits-conflux-v1",
       "accent": "#3db8c4",
       "roster": {
-        "Planeswalkerzy": ["Pasis", "Thunar", "Ignissa", "Lacus", "Monere", "Erdamon", "Fiur", "Kalt"],
-        "Elementaliści": ["Luna", "Brissa", "Ciele", "Labetha", "Inteus", "Aenain", "Gelare", "Grindan"]
+        "Planeswalkerzy": [
+          "Pasis",
+          "Thunar",
+          "Ignissa",
+          "Lacus",
+          "Monere",
+          "Erdamon",
+          "Fiur",
+          "Kalt"
+        ],
+        "Elementaliści": [
+          "Luna",
+          "Brissa",
+          "Ciele",
+          "Labetha",
+          "Inteus",
+          "Aenain",
+          "Gelare",
+          "Grindan"
+        ]
+      }
+    },
+    {
+      "id": "factory-portraits-v1",
+      "slug": "factory",
+      "name": "Fabryka — portrety bohaterów",
+      "nameEn": "Factory Hero Portraits",
+      "faction": "Fabryka",
+      "factionEn": "Factory",
+      "classes": [
+        "Najemnicy",
+        "Mechanicy"
+      ],
+      "status": "available",
+      "version": "1.0.0",
+      "heroes": 16,
+      "includes": [
+        "Portrety duże (portraitLarge) 1× — 58×64",
+        "Portrety małe (portraitSmall) 1× — 48×32",
+        "Warianty HD VCMI sprites2x / 3x / 4x"
+      ],
+      "notes": "Pełny skład 16 bohaterów miejskich Fabryki z Horn of the Abyss. Wymaga moda VCMI HotA z włączonym hota.factory. Niziołek (Henrietta), ciemny elf, goblin, krasnolud i gremlin zachowani z oryginału. Kampanijni poza paczką.",
+      "sheet": "assets/sheets/factory-original-vs-v1-5.png",
+      "sheetHpl": "assets/sheets/factory-hpl.png",
+      "download": "downloads/heroes3-new-design-portraits-factory-v1.zip",
+      "downloadSize": "5,2 MB",
+      "zipFolder": "heroes3-new-design-portraits-factory-v1",
+      "accent": "#c48a3a",
+      "roster": {
+        "Najemnicy": [
+          "Henrietta",
+          "Sam",
+          "Tancred",
+          "Melchior",
+          "Floribert",
+          "Wynona",
+          "Dury",
+          "Morton"
+        ],
+        "Mechanicy": [
+          "Celestine",
+          "Todd",
+          "Agar",
+          "Bertram",
+          "Wrathmont",
+          "Ziph",
+          "Victoria",
+          "Eanswythe"
+        ]
       }
     }
   ]
