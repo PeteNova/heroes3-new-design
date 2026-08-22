@@ -39,9 +39,12 @@ BUILD = {
     "fortress": "vcmi-hero-portraits-fortress-v1",
     "conflux": "vcmi-hero-portraits-conflux-v1",
     "factory": "vcmi-hero-portraits-factory-v1",
+    "cove": "vcmi-hero-portraits-cove-v1",
 }
 
 FACTORY_EXTRACTED = ROOT / "staging" / "hero-portraits-factory-v1" / "extracted"
+COVE_EXTRACTED = ROOT / "staging" / "hero-portraits-cove-v1" / "extracted"
+HOTA_SPRITE_FACTIONS = {"factory", "cove"}
 
 HPL = {
     "orrin": "HPL000KN",
@@ -205,6 +208,24 @@ HPL = {
     "ziph": "FACTORY",
     "victoria": "FACTORY",
     "eanswythe": "FACTORY",
+    # Cove (HotA) — no HPL codes; slug is the portrait key
+    "corkes": "COVE",
+    "jeremy": "COVE",
+    "illor": "COVE",
+    "elmore": "COVE",
+    "derek": "COVE",
+    "leena": "COVE",
+    "anabel": "COVE",
+    "cassiopeia": "COVE",
+    "miriam": "COVE",
+    "casmetra": "COVE",
+    "eovacius": "COVE",
+    "spint": "COVE",
+    "andal": "COVE",
+    "manfred": "COVE",
+    "zilare": "COVE",
+    "astra": "COVE",
+    "dargem": "COVE",
 }
 
 
@@ -223,7 +244,7 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
     override = WEB_OVERRIDES.get((faction, hero))
     if override is not None:
         src = override
-    elif faction == "factory":
+    elif faction in HOTA_SPRITE_FACTIONS:
         src = (
             ROOT
             / "build"
@@ -231,7 +252,7 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
             / "Content"
             / "sprites4x"
             / "hota"
-            / "factory"
+            / faction
             / "heroes"
             / hero
             / "icons"
@@ -239,7 +260,7 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
         )
     else:
         hpl = HPL.get(hero)
-        if not hpl or hpl == "FACTORY":
+        if not hpl or hpl in {"FACTORY", "COVE"}:
             raise SystemExit(f"No HPL id for {hero}")
         src = ROOT / "build" / build_name / "Content" / "Data4x" / f"{hpl}.PNG"
     if not src.is_file():
@@ -254,6 +275,12 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
 def load_original(hero: str, *, faction: str | None = None) -> Image.Image:
     if faction == "factory" or HPL.get(hero) == "FACTORY":
         src = FACTORY_EXTRACTED / f"{hero}-portraitLarge.png"
+        if not src.is_file():
+            raise SystemExit(f"Missing original HotA portrait for {hero}: {src}")
+        with Image.open(src) as image:
+            return image.convert("RGBA").copy()
+    if faction == "cove" or HPL.get(hero) == "COVE":
+        src = COVE_EXTRACTED / f"{hero}-portraitLarge.png"
         if not src.is_file():
             raise SystemExit(f"Missing original HotA portrait for {hero}: {src}")
         with Image.open(src) as image:

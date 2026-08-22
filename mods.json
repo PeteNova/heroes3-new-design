@@ -496,6 +496,56 @@
           "Eanswythe"
         ]
       }
+    },
+    {
+      "id": "cove-portraits-v1",
+      "slug": "cove",
+      "name": "Przystań — portrety bohaterów",
+      "nameEn": "Cove Hero Portraits",
+      "faction": "Przystań",
+      "factionEn": "Cove",
+      "classes": [
+        "Kapitanowie",
+        "Nawigatorzy"
+      ],
+      "status": "available",
+      "version": "1.0.0",
+      "heroes": 17,
+      "includes": [
+        "Portrety duże (portraitLarge) 1× — 58×64",
+        "Portrety małe (portraitSmall) 1× — 48×32",
+        "Warianty HD VCMI sprites2x / 3x / 4x"
+      ],
+      "notes": "Pełny skład 17 bohaterów miejskich Przystani z Horn of the Abyss. Wymaga moda VCMI HotA z włączonym hota.cove. Cassiopeia zostaje nimfą (blada skóra, platynowe włosy). Kampanijni Bidley, Tark i Balfour poza paczką.",
+      "sheet": "assets/sheets/cove-original-vs-v1-5.png",
+      "sheetHpl": "assets/sheets/cove-hpl.png",
+      "download": "downloads/heroes3-new-design-portraits-cove-v1.zip",
+      "downloadSize": "5,2 MB",
+      "zipFolder": "heroes3-new-design-portraits-cove-v1",
+      "accent": "#2a7a8c",
+      "roster": {
+        "Kapitanowie": [
+          "Corkes",
+          "Jeremy",
+          "Illor",
+          "Elmore",
+          "Derek",
+          "Leena",
+          "Anabel",
+          "Cassiopeia",
+          "Miriam"
+        ],
+        "Nawigatorzy": [
+          "Casmetra",
+          "Eovacius",
+          "Spint",
+          "Andal",
+          "Manfred",
+          "Zilare",
+          "Astra",
+          "Dargem"
+        ]
+      }
     }
   ]
 }
