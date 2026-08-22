@@ -118,14 +118,14 @@ window.H3ND_MODS = {
         "Magowie"
       ],
       "status": "available",
-      "version": "1.1.5",
+      "version": "1.1.6",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 alchemików i magów Wieży. v1.1.5: Solmyr — przywrócona błyskawica Chain Lightning z oryginału. v1.1.4: Iona i Fafner v1-5.",
+      "notes": "Pełny skład 16 alchemików i magów Wieży. v1.1.6: Neela — kotara i kadr v1-5. v1.1.5: Solmyr Chain Lightning. v1.1.4: Iona i Fafner v1-5.",
       "sheet": "assets/sheets/tower-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/tower-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-tower-v1.zip",
