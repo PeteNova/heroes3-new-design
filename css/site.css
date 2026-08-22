@@ -340,7 +340,7 @@ main {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: 400% 400%;
+  background-size: 400% 400%; /* 4×4 fallback; JS sets size for other rosters */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }

@@ -56,27 +56,53 @@
     return (mod.version || "") + suffix;
   }
 
+  function spriteAxisPercent(index, count) {
+    return count > 1 ? (index * 100) / (count - 1) : 0;
+  }
+
+  function rosterSpriteGrid(count, columns) {
+    var cols = columns || 4;
+    var rows = Math.max(1, Math.ceil(count / cols));
+    return {
+      columns: cols,
+      rows: rows,
+      size: cols * 100 + "% " + rows * 100 + "%",
+      position: function (index) {
+        var col = index % cols;
+        var row = Math.floor(index / cols);
+        return spriteAxisPercent(col, cols) + "% " + spriteAxisPercent(row, rows) + "%";
+      }
+    };
+  }
+
   function thumbHtml(mod) {
     var src = rosterSpriteUrl(mod);
     var originalSrc = originalRosterSpriteUrl(mod);
     var names = flattenRoster(mod);
+    var grid = rosterSpriteGrid(names.length, 4);
     var portraits = names.map(function (name, index) {
-      var col = index % 4;
-      var row = Math.floor(index / 4);
-      var pos = col * (100 / 3) + "% " + row * (100 / 3) + "%";
+      var pos = grid.position(index);
+      var faceStyle =
+        "background-image:url('" +
+        escapeHtml(versionedUrl(src, portraitVersion(mod))) +
+        "');background-size:" +
+        grid.size +
+        ";background-position:" +
+        pos;
+      var originalStyle =
+        "background-image:url('" +
+        escapeHtml(versionedUrl(originalSrc, (mod.version || "") + "-original")) +
+        "');background-size:" +
+        grid.size +
+        ";background-position:" +
+        pos;
       return (
         '<span class="gallery-portrait">' +
           '<button class="gallery-flip" type="button" aria-pressed="false" aria-label="' +
           escapeHtml(name) + ' — pokaż oryginał">' +
             '<span class="gallery-flip-inner">' +
-              '<span class="gallery-face is-mod" style="' +
-                "background-image:url('" +
-                escapeHtml(versionedUrl(src, portraitVersion(mod))) +
-                "');background-position:" + pos + '"></span>' +
-              '<span class="gallery-face is-original" style="' +
-                "background-image:url('" +
-                escapeHtml(versionedUrl(originalSrc, (mod.version || "") + "-original")) +
-                "');background-position:" + pos + '"></span>' +
+              '<span class="gallery-face is-mod" style="' + faceStyle + '"></span>' +
+              '<span class="gallery-face is-original" style="' + originalStyle + '"></span>' +
             "</span>" +
           "</button>" +
           "<i>" + escapeHtml(name) + "</i>" +
