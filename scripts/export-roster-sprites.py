@@ -40,11 +40,16 @@ BUILD = {
     "conflux": "vcmi-hero-portraits-conflux-v1",
     "factory": "vcmi-hero-portraits-factory-v1",
     "cove": "vcmi-hero-portraits-cove-v1",
+    "bulwark": "vcmi-hero-portraits-bulwark-v1",
 }
 
 FACTORY_EXTRACTED = ROOT / "staging" / "hero-portraits-factory-v1" / "extracted"
 COVE_EXTRACTED = ROOT / "staging" / "hero-portraits-cove-v1" / "extracted"
-HOTA_SPRITE_FACTIONS = {"factory", "cove"}
+BULWARK_EXTRACTED = ROOT / "staging" / "hero-portraits-bulwark-v1" / "extracted"
+HOTA_SPRITE_FACTIONS = {"factory", "cove", "bulwark"}
+# Factory and Cove keep HotA /icons/; Bulwark portraits sit directly under the hero folder.
+HOTA_SPRITE_ICONS = {"factory", "cove"}
+HOTA_HPL_MARKERS = {"FACTORY", "COVE", "BULWARK"}
 
 HPL = {
     "orrin": "HPL000KN",
@@ -226,6 +231,24 @@ HPL = {
     "zilare": "COVE",
     "astra": "COVE",
     "dargem": "COVE",
+    # Bulwark (HotA) — no HPL codes; slug is the portrait key
+    "dhuin": "BULWARK",
+    "oidana": "BULWARK",
+    "neia": "BULWARK",
+    "eikthurn": "BULWARK",
+    "creyle": "BULWARK",
+    "spadum": "BULWARK",
+    "kynr": "BULWARK",
+    "ergon": "BULWARK",
+    "kriv": "BULWARK",
+    "glacius": "BULWARK",
+    "sial": "BULWARK",
+    "dalton": "BULWARK",
+    "biarma": "BULWARK",
+    "akka": "BULWARK",
+    "vehr": "BULWARK",
+    "allora": "BULWARK",
+    "haugir": "BULWARK",
 }
 
 
@@ -245,22 +268,24 @@ def load_hpl4x(faction: str, build_name: str, hero: str) -> Image.Image:
     if override is not None:
         src = override
     elif faction in HOTA_SPRITE_FACTIONS:
-        src = (
-            ROOT
-            / "build"
-            / build_name
-            / "Content"
-            / "sprites4x"
-            / "hota"
-            / faction
-            / "heroes"
-            / hero
-            / "icons"
-            / "portraitLarge.png"
-        )
+        parts = [
+            ROOT,
+            "build",
+            build_name,
+            "Content",
+            "sprites4x",
+            "hota",
+            faction,
+            "heroes",
+            hero,
+        ]
+        if faction in HOTA_SPRITE_ICONS:
+            parts.append("icons")
+        parts.append("portraitLarge.png")
+        src = Path(*parts)
     else:
         hpl = HPL.get(hero)
-        if not hpl or hpl in {"FACTORY", "COVE"}:
+        if not hpl or hpl in HOTA_HPL_MARKERS:
             raise SystemExit(f"No HPL id for {hero}")
         src = ROOT / "build" / build_name / "Content" / "Data4x" / f"{hpl}.PNG"
     if not src.is_file():
@@ -281,6 +306,12 @@ def load_original(hero: str, *, faction: str | None = None) -> Image.Image:
             return image.convert("RGBA").copy()
     if faction == "cove" or HPL.get(hero) == "COVE":
         src = COVE_EXTRACTED / f"{hero}-portraitLarge.png"
+        if not src.is_file():
+            raise SystemExit(f"Missing original HotA portrait for {hero}: {src}")
+        with Image.open(src) as image:
+            return image.convert("RGBA").copy()
+    if faction == "bulwark" or HPL.get(hero) == "BULWARK":
+        src = BULWARK_EXTRACTED / f"{hero}-portraitLarge.png"
         if not src.is_file():
             raise SystemExit(f"Missing original HotA portrait for {hero}: {src}")
         with Image.open(src) as image:

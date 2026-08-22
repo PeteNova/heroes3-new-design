@@ -547,6 +547,56 @@ window.H3ND_MODS = {
           "Dargem"
         ]
       }
+    },
+    {
+      "id": "bulwark-portraits-v1",
+      "slug": "bulwark",
+      "name": "Warownia — portrety bohaterów",
+      "nameEn": "Bulwark Hero Portraits",
+      "faction": "Warownia",
+      "factionEn": "Bulwark",
+      "classes": [
+        "Wodzowie",
+        "Starsi"
+      ],
+      "status": "available",
+      "version": "1.0.0",
+      "heroes": 17,
+      "includes": [
+        "Portrety duże (portraitLarge) 1× — 58×64",
+        "Portrety małe (portraitSmall) 1× — 48×32",
+        "Warianty HD VCMI sprites2x / 3x / 4x"
+      ],
+      "notes": "Pełny skład 17 bohaterów miejskich Warowni z Horn of the Abyss. Wymaga moda VCMI HotA z włączonym hota.bulwark. Yeti, koboldy i jotunny zostają sobą (Spadum, Akka, Vehr, Kynr, Eikthurn, Dalton). Brak dodatkowych kampanijnych w hota.bulwark 1.0.0.",
+      "sheet": "assets/sheets/bulwark-original-vs-v1-5.png",
+      "sheetHpl": "assets/sheets/bulwark-hpl.png",
+      "download": "downloads/heroes3-new-design-portraits-bulwark-v1.zip",
+      "downloadSize": "5,7 MB",
+      "zipFolder": "heroes3-new-design-portraits-bulwark-v1",
+      "accent": "#5a8aaa",
+      "roster": {
+        "Wodzowie": [
+          "Dhuin",
+          "Oidana",
+          "Neia",
+          "Eikthurn",
+          "Creyle",
+          "Spadum",
+          "Kynr",
+          "Ergon"
+        ],
+        "Starsi": [
+          "Kriv",
+          "Glacius",
+          "Sial",
+          "Dalton",
+          "Biarma",
+          "Akka",
+          "Vehr",
+          "Allora",
+          "Haugir"
+        ]
+      }
     }
   ]
 };

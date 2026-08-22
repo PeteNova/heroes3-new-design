@@ -15,7 +15,7 @@ Status: ✅ done · 🔄 in progress · ⏳ todo.
 - [x] Katalog danych (`mods.json` + `js/mods-data.js`)
 - [x] Strona główna: pitch + lista frakcji
 - [x] Widok moda: skład, zawartość, contact sheet, przycisk pobierania
-- [x] ZIP-y z `build/vcmi-hero-portraits-*-v1/` (11 frakcji: Wieża–Wrota Żywiołów + Fabryka + Przystań HotA)
+- [x] ZIP-y z `build/vcmi-hero-portraits-*-v1/` (12 frakcji: Wieża–Wrota Żywiołów + Fabryka + Przystań + Warownia HotA)
 - [x] Contact sheety oryginał-vs-v1-5 tam, gdzie istnieją
 - [x] Instalacja VCMI + nota prawna
 - [x] Wskaźnik w nadrzędnym `ROADMAP.md`
@@ -31,6 +31,7 @@ Status: ✅ done · 🔄 in progress · ⏳ todo.
 - [x] Bastion v1.2.0 — Mephala w ZIP i na contact sheetach
 - [x] Fabryka (HotA): ZIP, sheety i katalog po akceptacji kadrów i deployu
 - [x] Przystań (HotA): ZIP, sheety i katalog po akceptacji kadrów i deployu
+- [x] Warownia (HotA): ZIP, sheety i katalog po akceptacji kadrów i deployu (loader bez `icons/`)
 - [ ] Specjalni i kampanijni, gdy powstanie paczka
 
 ## Później
