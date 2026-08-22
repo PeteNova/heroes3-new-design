@@ -118,14 +118,14 @@ window.H3ND_MODS = {
         "Magowie"
       ],
       "status": "available",
-      "version": "1.1.2",
+      "version": "1.1.3",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 alchemików i magów Wieży. Solmyr z pilota v3.1. v1.1.2: Thane — zaakceptowany kadr v1-5 (naprawiony dół, zoom 1.32).",
+      "notes": "Pełny skład 16 alchemików i magów Wieży. Solmyr z pilota v3.1. v1.1.3: Thane i Astral — zaakceptowane kadry v1-5.",
       "sheet": "assets/sheets/tower-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/tower-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-tower-v1.zip",
