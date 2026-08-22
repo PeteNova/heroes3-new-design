@@ -118,18 +118,18 @@ window.H3ND_MODS = {
         "Magowie"
       ],
       "status": "available",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 alchemików i magów Wieży. Solmyr pochodzi z zatwierdzonego pilota v3.1. Paczka v1.1.0 ma ten sam kadr co wdrożone 1×, plus HD 2×/3×/4×.",
+      "notes": "Pełny skład 16 alchemików i magów Wieży. Solmyr z pilota v3.1. v1.1.1: Thane i Astral w stylu malarskim v1-5.",
       "sheet": "assets/sheets/tower-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/tower-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-tower-v1.zip",
-      "downloadSize": "4,4 MB",
+      "downloadSize": "4,5 MB",
       "zipFolder": "heroes3-new-design-portraits-tower-v1",
       "accent": "#5b8fd4",
       "roster": {
@@ -216,14 +216,14 @@ window.H3ND_MODS = {
         "Nekromanci"
       ],
       "status": "available",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 rycerzy śmierci i nekromantów Deyji. Paczka v1.2.0 po przeglądzie kadrów (m.in. Straker, Isra, Nimbus, Thant, Nagash) — ten sam kadr w 1× i HD.",
+      "notes": "Pełny skład 16 rycerzy śmierci i nekromantów Deyji. v1.2.1: Vokial odzyskuje jasny futrzany kołnierz z oryginału.",
       "sheet": "assets/sheets/necropolis-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/necropolis-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-necropolis-v1.zip",
@@ -265,14 +265,14 @@ window.H3ND_MODS = {
         "Warlockowie"
       ],
       "status": "available",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "heroes": 16,
       "includes": [
         "Portrety dużych (HPL) 1× — 58×64",
         "Portrety małych (HPS) 1× — 48×32",
         "Warianty HD VCMI 2× / 3× / 4×"
       ],
-      "notes": "Pełny skład 16 overlordów i warlocków Nighonu. Ciemna paleta i nieludzkie rysy twarzy bez „uczłowieczania”.",
+      "notes": "Pełny skład 16 overlordów i warlocków Nighonu. Ciemna paleta i nieludzkie rysy twarzy bez „uczłowieczania”. v1.1.1: Synca bliżej w kadrze.",
       "sheet": "assets/sheets/dungeon-original-vs-v1-5.png",
       "sheetHpl": "assets/sheets/dungeon-hpl.png",
       "download": "downloads/heroes3-new-design-portraits-dungeon-v1.zip",
